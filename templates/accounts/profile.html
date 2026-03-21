@@ -1,0 +1,44 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+
+    <div class="card p-4 shadow-sm text-center">
+
+      <h3 class="mb-4">My Profile</h3>
+
+      <!-- Avatar -->
+      {% if user.profile.avatar %}
+        <img src="{{ user.profile.avatar.url }}"
+             class="rounded-circle mb-3"
+             width="120" height="120">
+      {% endif %}
+
+      <h5>{{ user.username }}</h5>
+
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3 text-start">
+          <label>Change Avatar</label>
+          {{ form.avatar }}
+        </div>
+
+        <div class="mb-3 text-start">
+          <label>Bio</label>
+          {{ form.bio }}
+        </div>
+
+        <button class="btn btn-dark w-100">Update Profile</button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<h2>My Posts</h2>
+
+<a href="/dashboard/create/" class="btn btn-dark mb-3">Write New</a>
+
+<table class="table">
+<tr>
+  <th>Title</th>
+  <th>Date</th>
+</tr>
+
+{% for post in posts %}
+<tr>
+  <td>{{ post.title }}</td>
+  <td>{{ post.created_at }}</td>
+</tr>
+{% endfor %}
+
+</table>
+{% endblock %}
